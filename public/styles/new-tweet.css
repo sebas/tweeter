@@ -1,0 +1,29 @@
+.new-tweet {
+  background-color: lightgrey;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; /* future proofing */
+  -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  padding: 5px;
+  margin: 5px 2em;
+}
+
+.new-tweet h2 {
+  border-bottom: 2px solid red;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.new-tweet textarea {
+  padding: 2px;
+  width: 100%;
+}
+
+.new-tweet input[type=submit] {
+  color: brown;
+}
+
+.counter {
+  color: blue;
+  float: right;
+}

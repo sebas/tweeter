@@ -1,0 +1,27 @@
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+#nav-bar {
+  background-color: #00a087;
+  color: #e8fdff;
+  height: 80px;
+  padding: 0px 2em 0px 2em;
+}
+
+#nav-bar .header {
+  float: left;
+  line-height: 250%;
+  font-size: 2em;
+}
+
+#nav-bar .logo {
+  float: left;
+  width: 80px;
+  height: 80px;
+  padding: 0px 0px 0px 10px;
+}
