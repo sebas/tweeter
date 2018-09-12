@@ -26,7 +26,9 @@ $( function () {
     $tweet = $("<article>").addClass("tweet");
     let $header = $("<header>");
     let $headerImage = $("<img>").attr("src", tweetObject.user.avatars.small);
-    let $nameSpan = $("<span>").addClass("user-name").text(tweetObject.user.name);
+    let $nameSpan = $("<span>").addClass("user-name");
+    let $nameSpanStrong = $("<strong>").text(tweetObject.user.name);
+    $nameSpan.append($nameSpanStrong);
     let $userSpan = $("<span>").addClass("user").text(tweetObject.user.handle);
     $header.append($headerImage);
     $header.append($nameSpan);
@@ -48,29 +50,15 @@ $( function () {
 
     $tweet.append($theFooter);
 
-    console.log("User name... ", tweetObject.user.name );
-    console.log("User avatar... ", tweetObject.user.avatars.small );
-    console.log("User handle... ", tweetObject.user.handle );
-    console.log("Tweet... ", tweetObject.content.text );
-    console.log("When... ", tweetObject.created_at );
-
     return $tweet;
   }
 
   function renderTweets(arrayTweetObjects) {
-    // Test / driver code (temporary)
-    // arrrayTweetObject.forEach(tweet => {
-    //   return createTweetElement(tweet);
-    // });
-
     for (let index = 0; index < arrayTweetObjects.length; index++) {
       const tweet = arrayTweetObjects[index];
       $rndTw = createTweetElement(tweet);
       $('#tweets-container').append($rndTw);
     }
-    // console.log($tweet); // to see what it looks like
-    // $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-    return null;
   }
 
   // Test / driver code (temporary). Eventually will get this from the server.
@@ -137,8 +125,6 @@ $( function () {
       "created_at": 1461113796368
     }
   ];
-
-  var $tweet = createTweetElement(tweetData);
-
+  
   renderTweets(data);
 })
