@@ -57,7 +57,7 @@ $( function () {
   function renderTweets(arrayTweetObjects) {  
     for (let index = 0; index < arrayTweetObjects.length; index++) {
       const tweet = arrayTweetObjects[index];
-      $rndTw = createTweetElement(tweet);
+      const $rndTw = createTweetElement(tweet);
       $('#tweets-container').append($rndTw);
     }
   }
@@ -72,7 +72,8 @@ $( function () {
     $('form').on("submit", function(event) {
       event.preventDefault();
 
-      let textFromForm = $('form input[name="text"').val();
+      let textFromForm = $('.new-tweet textarea').val();
+      console.log(textFromForm);
       if(textFromForm.length > 140) {
         alert("Way too long!");
         return;
