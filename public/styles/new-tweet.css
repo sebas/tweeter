@@ -62,10 +62,10 @@
 
 .tweet footer {
   border-top: 1px solid black;
-  padding: 0px 0px 0px 10px;
+  padding: 0px 2px 5px 10px;
 }
 
-.tweet img {
+.tweet header img {
   border-radius: 10px;
   padding: 5px;
 }
@@ -81,6 +81,7 @@
 
 .interaction {
   display: none;
+  float: right;
 }
 
 .tweet:hover .interaction {

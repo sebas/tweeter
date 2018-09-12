@@ -43,7 +43,7 @@ $( function () {
 
     let $theFooter = $("<footer>");
     let $footerContent = $("<span>").text(tweetObject.created_at);
-    let $footerImage = $("<img>").attr("src","footer_img.jpg").addClass("interaction");
+    let $footerImage = $("<img>").attr("src","/images/interaction.png").addClass("interaction");
 
     $theFooter.append($footerContent);
     $theFooter.append($footerImage);
