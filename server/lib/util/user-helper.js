@@ -1,6 +1,6 @@
 "use strict";
 
-const Chance = require("chance");
+const Chance = require('chance');
 const chance = new Chance();
 
 const md5 = require('md5');
