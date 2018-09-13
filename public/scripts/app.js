@@ -65,12 +65,12 @@ $( function () {
   function loadTweets() {
     $.ajax('/tweets').then(function(tweets) {
       renderTweets(tweets);
+      // $('.error').slideToggle();
     });
   }
 
   function toggleForm () {
     $('#compose').on("click", function(event) {
-      console.log("quiere escribir...");
       $(".new-tweet").slideToggle();
       $(".new-tweet textarea").focus();
     });
@@ -79,14 +79,15 @@ $( function () {
   function ajaxPost () {
     $('form').on("submit", function(event) {
       event.preventDefault();
+      $('.error').slideUp();
 
       let textFromForm = $('.new-tweet textarea').val();
       if(textFromForm.length > 140) {
-        alert("Way too long!");
+        $('.error').text("Way too long!").slideToggle();
         return;
       }      
       if(textFromForm === '') {
-        alert("Not empty please!");
+        $('.error').text("Not empty please!").slideToggle();
         return;
       }
 

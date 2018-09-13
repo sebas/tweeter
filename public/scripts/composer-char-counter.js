@@ -3,11 +3,11 @@
 $(document).ready(function() {
   $('textarea').on('input', function(event) {
     let charactersLeft = 140 - this.value.length;
-    $(this).parent().children('span').text(charactersLeft);
+    $(this).parent().children('.counter').text(charactersLeft);
     if (charactersLeft < 0) {
-      $(this).parent().children('span').addClass('exceded');
+      $(this).parent().children('.counter').addClass('exceded');
     } else {
-      $(this).parent().children('span').removeClass('exceded');
+      $(this).parent().children('.counter').removeClass('exceded');
     }
   })
 });

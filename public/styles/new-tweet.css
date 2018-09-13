@@ -33,6 +33,11 @@
   float: right;
 }
 
+.error{
+  color: red;
+  display: none;
+}
+
 .tweet {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
