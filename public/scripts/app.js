@@ -68,12 +68,19 @@ $( function () {
     });
   }
 
+  function toggleForm () {
+    $('#compose').on("click", function(event) {
+      console.log("quiere escribir...");
+      $(".new-tweet").slideToggle();
+      $(".new-tweet textarea").focus();
+    });
+  }
+
   function ajaxPost () {
     $('form').on("submit", function(event) {
       event.preventDefault();
 
       let textFromForm = $('.new-tweet textarea').val();
-      console.log(textFromForm);
       if(textFromForm.length > 140) {
         alert("Way too long!");
         return;
@@ -95,6 +102,7 @@ $( function () {
     });
   }
 
+  toggleForm();
   ajaxPost();
   loadTweets();
 })

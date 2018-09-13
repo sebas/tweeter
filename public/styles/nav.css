@@ -25,3 +25,9 @@
   height: 80px;
   padding: 0px 0px 0px 10px;
 }
+
+#nav-bar #compose {
+  float: right;
+  font-size: 2em;
+  margin: 10px;
+}
