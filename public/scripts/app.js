@@ -65,7 +65,6 @@ $( function () {
   function loadTweets() {
     $.ajax('/tweets').then(function(tweets) {
       renderTweets(tweets);
-      // $('.error').slideToggle();
     });
   }
 
