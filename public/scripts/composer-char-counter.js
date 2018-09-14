@@ -1,7 +1,7 @@
 "use strict";
 
 $(document).ready(function() {
-  $('textarea').on('input', function(event) {
+  $('textarea').on('input', function() {
     let charactersLeft = 140 - this.value.length;
     $(this).parent().children('.counter').text(charactersLeft);
     if (charactersLeft < 0) {
@@ -9,5 +9,5 @@ $(document).ready(function() {
     } else {
       $(this).parent().children('.counter').removeClass('exceded');
     }
-  })
+  });
 });
