@@ -7,48 +7,14 @@
 
 $( function () {
 
-  function convertMiliseconds(milliseconds) {
-      
-    var days, hours, minutes, seconds, total_hours, total_minutes, total_seconds;
-    
-    total_seconds = parseInt(Math.floor(milliseconds / 1000));
-    total_minutes = parseInt(Math.floor(total_seconds / 60));
-    total_hours = parseInt(Math.floor(total_minutes / 60));
-    days = parseInt(Math.floor(total_hours / 24));
-    seconds = parseInt(total_seconds % 60);
-    minutes = parseInt(total_minutes % 60);
-    hours = parseInt(total_hours % 24);
-
-    if( days > 1 ) {
-      return days + " days ago";
-    }
-
-    if(hours > 1) {
-      return hours + " hour ago";
-    }
-
-    if (minutes > 1 ) {
-      return minutes + " minute ago";
-    }  
-    
-    switch(format) {
-    case 's':
-      return total_seconds;
-      break;
-    case 'm':
-      return total_minutes;
-      break;
-    case 'h':
-      return total_hours;
-      break;
-    case 'd':
-      return days;
-      break;
-    default:
-      return { d: days, h: hours, m: minutes, s: seconds };
-    }
-  };
-
+  // This function creates the html for a new tweet 
+  // it follows the html and styles that we defined at the start.
+  // We do it by parts
+  // a) the header
+  // b) the tweet
+  // c) the footer
+  // then we put the parts in to the real tweet
+  // and return it to the caller.
   function createTweetElement(tweetObject) {
     let $tweet = $("<article>").addClass("tweet");
     let $header = $("<header>");
@@ -80,6 +46,12 @@ $( function () {
     return $tweet;
   }
 
+  // We get an array of tweet objects and prepare them for display.
+  // First step is to clear what we currently have, the container in our 
+  // DOM, to avoid duplication.
+  // We then loop the array and call createTweetElement to get the
+  // tweet from object to html and then we add it to the container
+  // where they are displayed.
   function renderTweets(arrayTweetObjects) {
     $('#tweets-container').empty();
     for (let index = 0; index < arrayTweetObjects.length; index++) {
@@ -89,12 +61,22 @@ $( function () {
     }
   }
 
+  // We do a ajax request to get the tweets from our API/backend
+  // what we get back, when we get it, that is why the "then"
+  // we get them rendered by calling renderTweets, that also get them
+  // displayed.
   function loadTweets() {
     $.ajax('/tweets').then(function(tweets) {
       renderTweets(tweets);
     });
   }
 
+  // We create a event listener on for the click event
+  // on our compose button that way when our user clicks
+  // the compose button on the nav bar at the top we toggle
+  // the compose form. It is animated with the slide toggle
+  // animation provided by jQuery.
+  // It also give focus to the textarea in the form.
   function toggleForm () {
     $('#compose').on("click", function() {
       $(".new-tweet").slideToggle();
@@ -102,6 +84,19 @@ $( function () {
     });
   }
 
+  // When a user composes a new tweet, and clicks the submit button
+  // we catch it in here and interrupt the normal flow by preventing
+  // the default behaviour, in that way we can do validation and
+  // submit it using AJAX in our own terms.
+  // This function also checks that the textarea in the form is
+  // not empty or that there are no more than 140 characters on it.
+  // If there is either one of those conditions it displays an error message.
+  // If there are no errors then we do a AJAX post to our backend, to store the
+  // information in the database and make it persistent.
+  // Once we come back from saving the infometion we then (async) clear the
+  // textarea in the form and reset the counter.
+  // Once we are done with that, we load (reload) the tweets that are in the
+  // database and display them. Using the loadTweets function.
   function ajaxPost () {
     $('form').on("submit", function(event) {
       event.preventDefault();
@@ -130,6 +125,10 @@ $( function () {
     });
   }
 
+
+  // When the server starts we call this functions to get the page setup.
+  // We need to register the event listeners and load the tweets that
+  // we have in the database.
   toggleForm();
   ajaxPost();
   loadTweets();
