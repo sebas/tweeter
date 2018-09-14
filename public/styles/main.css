@@ -1,0 +1,160 @@
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/*
+ * Global layout stuff
+ */
+body {
+  margin: 0;
+  color: #244751;
+  background-color: #eee;
+}
+
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+ */
+.container {
+  width: 450px;
+  background-color: white;
+  margin: 80px auto 0px;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+#nav-bar {
+  background-color: #00a087;
+  color: #e8fdff;
+  height: 80px;
+  padding: 0px 2em 0px 2em;
+}
+
+#nav-bar .header {
+  float: left;
+  line-height: 250%;
+  font-size: 2em;
+}
+
+#nav-bar .logo {
+  float: left;
+  width: 80px;
+  height: 80px;
+  padding: 0px 0px 0px 10px;
+}
+
+#nav-bar #compose {
+  float: right;
+  font-size: 2em;
+  margin: 10px;
+}
+
+.new-tweet {
+  background-color: lightgrey;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  /* future proofing */
+  -khtml-border-radius: 10px;
+  /* for old Konqueror browsers */
+  padding: 5px;
+  margin: 5px 2em;
+}
+.new-tweet h2 {
+  border-bottom: 2px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.new-tweet textarea {
+  padding: 2px;
+  width: 100%;
+}
+.new-tweet input[type=submit] {
+  color: brown;
+}
+
+.counter {
+  color: blue;
+  float: right;
+}
+
+.exceded {
+  color: red;
+  float: right;
+}
+
+.error {
+  color: red;
+  display: none;
+}
+
+.tweet {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  /* future proofing */
+  -khtml-border-radius: 10px;
+  /* for old Konqueror browsers */
+  margin: 5px 2em;
+  border: 1px solid black;
+  opacity: 0.5;
+}
+.tweet header {
+  background-color: lightgrey;
+  border-radius: 10px 10px 0px 0px;
+}
+.tweet footer {
+  border-top: 1px solid black;
+  padding: 0px 2px 5px 10px;
+}
+.tweet header img {
+  border-radius: 10px;
+  padding: 5px;
+}
+.tweet:hover {
+  opacity: 1;
+}
+.tweet:hover .interaction {
+  display: inline;
+}
+
+.the-tweet {
+  font-size: 20px;
+  padding: 10px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.interaction {
+  display: none;
+  float: right;
+}
+
+.user-name {
+  font-size: 20px;
+  float: left;
+  position: absolute;
+  padding: 10px 0px 0px 5px;
+}
+
+.user {
+  float: right;
+  padding: 10px 10px 0px 0px;
+}
+
+/*# sourceMappingURL=main.css.map */

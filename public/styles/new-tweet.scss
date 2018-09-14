@@ -1,3 +1,5 @@
+// new-tweet.scss
+
 .new-tweet {
   background-color: lightgrey;
   -moz-border-radius: 10px;
@@ -6,21 +8,18 @@
   -khtml-border-radius: 10px; /* for old Konqueror browsers */
   padding: 5px;
   margin: 5px 2em;
-}
-
-.new-tweet h2 {
-  border-bottom: 2px solid black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.new-tweet textarea {
-  padding: 2px;
-  width: 100%;
-}
-
-.new-tweet input[type=submit] {
-  color: brown;
+  h2 {
+    border-bottom: 2px solid black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  textarea {
+    padding: 2px;
+    width: 100%;
+  }
+  input[type=submit] {
+    color: brown;
+  }
 }
 
 .counter {
@@ -29,12 +28,12 @@
 }
 
 .exceded{
-  color: red;
+  color: $alert-color;
   float: right;
 }
 
 .error{
-  color: red;
+  color: $alert-color;
   display: none;
 }
 
@@ -45,12 +44,37 @@
   -khtml-border-radius: 10px; /* for old Konqueror browsers */
   margin: 5px 2em;
   border: 1px solid black;
-  opacity: 0.5
+  opacity: 0.5;
+  header {
+    background-color: lightgrey;
+    border-radius: 10px 10px 0px 0px;
+  }
+  footer {
+    border-top: 1px solid black;
+    padding: 0px 2px 5px 10px;
+  }
+  header img {
+    border-radius: 10px;
+    padding: 5px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+  &:hover .interaction {
+    display: inline;
+  }
 }
 
-.tweet header {
-  background-color: lightgrey;
-  border-radius: 10px 10px 0px 0px;
+.the-tweet {
+  font-size: 20px;
+  padding: 10px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.interaction {
+  display: none;
+  float: right;
 }
 
 .user-name {
@@ -63,34 +87,4 @@
 .user {
   float: right;
   padding: 10px 10px 0px 0px;
-}
-
-.tweet footer {
-  border-top: 1px solid black;
-  padding: 0px 2px 5px 10px;
-}
-
-.tweet header img {
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.the-tweet {
-  font-size: 20px;
-  padding: 10px;
-  word-break: break-all;
-  word-wrap: break-word;
-}
-
-.tweet:hover {
-  opacity: 1;
-}
-
-.interaction {
-  display: none;
-  float: right;
-}
-
-.tweet:hover .interaction {
-  display: inline;
 }
