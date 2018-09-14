@@ -14,9 +14,8 @@ const MONGODB_URI   = "mongodb://localhost:27017/tweeter";
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// The in-memory database of tweets. It's a basic object with an array in it.
-// const db = require('./lib/in-memory-db');
-
+// Here we start a connection to our Mongo DB
+// where we persist the tweets.
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
     console.error(`Failed to connect: ${MONGODB_URI}`);
@@ -28,8 +27,7 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
 
   // The `data-helpers` module provides an interface to the database of tweets.
   // This simple interface layer has a big benefit: we could switch out the
-  // actual database it uses and see little to no changes elsewhere in the code
-  // (hint hint).
+  // actual database it uses and see little to no changes elsewhere in the code.
   //
   // Because it exports a function that expects the `db` as a parameter, we can
   // require it and pass the `db` parameter immediately:
@@ -46,5 +44,4 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
     console.log("Tweeter app listening on port " + PORT);
   });
 
-  // db.close();
 });

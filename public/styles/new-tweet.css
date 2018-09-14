@@ -9,7 +9,7 @@
 }
 
 .new-tweet h2 {
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid black;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -78,6 +78,8 @@
 .the-tweet {
   font-size: 20px;
   padding: 10px;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .tweet:hover {
