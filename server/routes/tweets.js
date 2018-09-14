@@ -12,7 +12,7 @@ module.exports = function(DataHelpers) {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        res.json(tweets);
+        res.json(tweets.sort((a, b) => b.created_at - a.created_at));
       }
     });
   });
@@ -42,4 +42,4 @@ module.exports = function(DataHelpers) {
   });
 
   return tweetsRoutes;
-}
+};
