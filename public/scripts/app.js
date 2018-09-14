@@ -3,26 +3,52 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
- /*
-      <article class="tweet">
-      <header>
-        <img src="https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png">
-        <span class="user-name"><strong>Bill Fields</strong></span>
-        <span class="user">@MrFields</span>
-      </header>
-      <section>
-        <span class="the-tweet">Little tweet here</span>
-      </section>
-      <footer>
-        <span>10 days ago</span>
-        <img class="interaction" src="https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" >
-      </footer>
-    </article>
-*/
 "use strict";
 
 $( function () {
+
+  function convertMiliseconds(milliseconds) {
+      
+    var days, hours, minutes, seconds, total_hours, total_minutes, total_seconds;
+    
+    total_seconds = parseInt(Math.floor(milliseconds / 1000));
+    total_minutes = parseInt(Math.floor(total_seconds / 60));
+    total_hours = parseInt(Math.floor(total_minutes / 60));
+    days = parseInt(Math.floor(total_hours / 24));
+    seconds = parseInt(total_seconds % 60);
+    minutes = parseInt(total_minutes % 60);
+    hours = parseInt(total_hours % 24);
+
+    if( days > 1 ) {
+      return days + " days ago";
+    }
+
+    if(hours > 1) {
+      return hours + " hour ago";
+    }
+
+    if (minutes > 1 ) {
+      return minutes + " minute ago";
+    }  
+    
+    switch(format) {
+    case 's':
+      return total_seconds;
+      break;
+    case 'm':
+      return total_minutes;
+      break;
+    case 'h':
+      return total_hours;
+      break;
+    case 'd':
+      return days;
+      break;
+    default:
+      return { d: days, h: hours, m: minutes, s: seconds };
+    }
+  };
+
   function createTweetElement(tweetObject) {
     let $tweet = $("<article>").addClass("tweet");
     let $header = $("<header>");
@@ -43,7 +69,7 @@ $( function () {
     $tweet.append($theTwit);
 
     let $theFooter = $("<footer>");
-    let $footerContent = $("<span>").text(tweetObject.created_at);
+    let $footerContent = $("<span>").text(moment(new Date(tweetObject.created_at)).fromNow());
     let $footerImage = $("<img>").attr("src","/images/interaction.png").addClass("interaction");
 
     $theFooter.append($footerContent);
@@ -54,7 +80,8 @@ $( function () {
     return $tweet;
   }
 
-  function renderTweets(arrayTweetObjects) {  
+  function renderTweets(arrayTweetObjects) {
+    $('#tweets-container').empty();
     for (let index = 0; index < arrayTweetObjects.length; index++) {
       const tweet = arrayTweetObjects[index];
       const $rndTw = createTweetElement(tweet);
@@ -69,7 +96,7 @@ $( function () {
   }
 
   function toggleForm () {
-    $('#compose').on("click", function(event) {
+    $('#compose').on("click", function() {
       $(".new-tweet").slideToggle();
       $(".new-tweet textarea").focus();
     });
@@ -96,6 +123,7 @@ $( function () {
         data: formData
       }).then(function() {
         $('.new-tweet textarea').val('');
+        $('.counter').text('140');
       }).then(function() {
         loadTweets();
       });
@@ -105,4 +133,4 @@ $( function () {
   toggleForm();
   ajaxPost();
   loadTweets();
-})
+});
